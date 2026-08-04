@@ -1,6 +1,6 @@
-# El DNS de este dominio debe apuntar al VPS antes de levantar el contenedor,
-# para que Caddy pueda emitir el certificado HTTPS (Let's Encrypt) automáticamente.
-{$DOMAIN:gabinetesocial.datosriocuarto.gob.ar} {
+# Coolify/Cloudflare terminan el HTTPS por delante; Caddy sirve en HTTP plano
+# por los puertos 80 y 3000.
+:80, :3000 {
 	root * /srv
 	file_server
 	encode gzip
