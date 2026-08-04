@@ -1,0 +1,13 @@
+# Reemplazar TU_DOMINIO_AQUI por el dominio real (con su DNS ya apuntando al VPS)
+# antes de desplegar, o pasarlo como variable de entorno DOMAIN al contenedor.
+{$DOMAIN:TU_DOMINIO_AQUI} {
+	root * /srv
+	file_server
+	encode gzip
+
+	header {
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy strict-origin-when-cross-origin
+	}
+}

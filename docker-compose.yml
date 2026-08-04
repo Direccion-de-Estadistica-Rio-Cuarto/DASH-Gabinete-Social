@@ -1,0 +1,17 @@
+services:
+  tablero:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      # Reemplazar por el dominio real (DNS ya apuntando al VPS).
+      - DOMAIN=TU_DOMINIO_AQUI
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:
