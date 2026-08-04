@@ -6,8 +6,7 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      # Reemplazar por el dominio real (DNS ya apuntando al VPS).
-      - DOMAIN=TU_DOMINIO_AQUI
+      - DOMAIN=gabinetesocial.riocuarto.gob.ar
     volumes:
       - caddy_data:/data
       - caddy_config:/config
