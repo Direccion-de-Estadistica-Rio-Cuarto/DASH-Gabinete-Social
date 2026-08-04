@@ -1,6 +1,6 @@
 # El DNS de este dominio debe apuntar al VPS antes de levantar el contenedor,
 # para que Caddy pueda emitir el certificado HTTPS (Let's Encrypt) automáticamente.
-{$DOMAIN:gabinetesocial.riocuarto.gob.ar} {
+{$DOMAIN:gabinetesocial.datosriocuarto.gob.ar} {
 	root * /srv
 	file_server
 	encode gzip
