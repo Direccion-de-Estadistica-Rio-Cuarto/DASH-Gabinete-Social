@@ -6,7 +6,7 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      - DOMAIN=gabinetesocial.riocuarto.gob.ar
+      - DOMAIN=gabinetesocial.datosriocuarto.gob.ar
     volumes:
       - caddy_data:/data
       - caddy_config:/config

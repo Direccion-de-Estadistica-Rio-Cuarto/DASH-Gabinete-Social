@@ -1,13 +1,15 @@
 # El DNS de este dominio debe apuntar al VPS antes de levantar el contenedor,
 # para que Caddy pueda emitir el certificado HTTPS (Let's Encrypt) automáticamente.
-{$DOMAIN:gabinetesocial.riocuarto.gob.ar} {
+{$DOMAIN:gabinetesocial.datosriocuarto.gob.ar} {
 	root * /srv
 	file_server
 	encode gzip
 
 	header {
 		X-Content-Type-Options nosniff
-		X-Frame-Options DENY
 		Referrer-Policy strict-origin-when-cross-origin
+		# Permite embeber el tablero solo en los sitios listados (reemplaza a
+		# X-Frame-Options, que no admite más de un origen autorizado).
+		Content-Security-Policy "frame-ancestors 'self' https://observatorio.datosriocuarto.gob.ar"
 	}
 }
