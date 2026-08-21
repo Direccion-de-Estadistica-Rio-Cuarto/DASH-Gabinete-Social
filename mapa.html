@@ -132,7 +132,7 @@ const fmtPct = v => (v==null ? 's/d' : v.toFixed(1)+'%');
 
 const METRICS = [
   { key: 'encuestas', label: 'Cantidad de encuestas', get: s => s.encuestas, isPct: false },
-  { key: 'viv-dni', label: 'Vivienda: DNI completo', get: s => s.vivienda.dniCompleto.pct, isPct: true },
+  // { key: 'viv-dni', label: 'Vivienda: DNI completo', get: s => s.vivienda.dniCompleto.pct, isPct: true },
   { key: 'viv-analf', label: 'Vivienda: analfabetismo', get: s => s.vivienda.analfabetismo.pct, isPct: true },
   { key: 'prog-benef', label: 'Programas: beneficiarios', get: s => s.programas.beneficiario.pct, isPct: true },
   { key: 'alim-comedor', label: 'Alimentación: comedor comunitario', get: s => s.alimentacion.comedor.pct, isPct: true },
@@ -222,7 +222,7 @@ function statBlocksHTML(s){
       '<div><strong>'+fmtN(s.menores)+'</strong><span>menores de edad</span></div>'+
     '</div>'+
     categoryBlock('tint-verde','home','Vivienda',[
-      ['DNI completo', fmtPct(s.vivienda.dniCompleto.pct), s.vivienda.dniCompleto.n],
+      // ['DNI completo', fmtPct(s.vivienda.dniCompleto.pct), s.vivienda.dniCompleto.n],
       ['Analfabetismo', fmtPct(s.vivienda.analfabetismo.pct), s.vivienda.analfabetismo.n],
     ]) +
     categoryBlock('tint-amarillo','volunteer_activism','Programas',[
