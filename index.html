@@ -279,7 +279,9 @@ footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;font-si
   <section class="cat-section" id="vivienda">
     <div class="cat-head"><span class="chip"><span class="material-symbols-outlined">home</span>Vivienda y documentación</span><h2>¿Cómo viven los hogares relevados?</h2></div>
     <div class="tile-grid">
+      <!-- Ocultado temporalmente
       <div class="tile"><div class="tile-num" data-stat="viv-dni">-</div><div class="tile-count" data-count="viv-dni">-</div><div class="tile-label">Hogares con DNI completo de todos sus integrantes</div><div class="bar-track"><div class="bar-fill" data-bar="viv-dni"></div></div></div>
+      -->
       <div class="tile"><div class="tile-num" data-stat="viv-analf">-</div><div class="tile-count" data-count="viv-analf">-</div><div class="tile-label">Hogares con al menos una persona en situación de analfabetismo</div><div class="bar-track"><div class="bar-fill" data-bar="viv-analf"></div></div></div>
       <div class="tile"><div class="tile-num" data-stat="viv-personas-prom">-</div><div class="tile-label">Personas promedio por hogar</div></div>
     </div>
@@ -296,7 +298,9 @@ footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;font-si
     <div class="cat-head"><span class="chip"><span class="material-symbols-outlined">restaurant</span>Alimentación</span><h2>Acceso a la alimentación</h2></div>
     <div class="tile-grid">
       <div class="tile"><div class="tile-num" data-stat="alim-comedor">-</div><div class="tile-count" data-count="alim-comedor">-</div><div class="tile-label">Hogares con algún integrante que asiste a comedor comunitario</div><div class="bar-track"><div class="bar-fill" data-bar="alim-comedor"></div></div></div>
+      <!-- Ocultado temporalmente
       <div class="tile"><div class="tile-num" data-stat="alim-4com">-</div><div class="tile-count" data-count="alim-4com">-</div><div class="tile-label">Hogares que realizan 4 o más comidas diarias</div><div class="bar-track"><div class="bar-fill" data-bar="alim-4com"></div></div></div>
+      -->
       <div class="tile"><div class="tile-num" data-stat="alim-1com">-</div><div class="tile-count" data-count="alim-1com">-</div><div class="tile-label">Hogares que realizan 1 sola comida diaria o comen de forma ocasional</div><div class="bar-track"><div class="bar-fill" data-bar="alim-1com"></div></div></div>
     </div>
   </section>
@@ -619,7 +623,7 @@ function render(){
   animateCountText(document.getElementById('statPersonas'), totalPersonas);
   animateCountText(document.getElementById('statMenores'), totalMenores);
 
-  setStat('viv-dni', rate(rows, 'VIV_DNI_COMPLETO', { invert: true }));
+  setStat('viv-dni', rate(rows, 'VIV_DNI_COMPLETO'));
   setStat('viv-analf', rate(rows, 'VIV_ANALFABETISMO'));
   const promPersonas = rows.length ? totalPersonas/rows.length : 0;
   animateNumberText(document.querySelector('[data-stat="viv-personas-prom"]'), promPersonas, v => v.toFixed(1), parseArNumText);
