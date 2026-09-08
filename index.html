@@ -15,8 +15,9 @@
   --brand:#009DE0; --brand-d:#0079ac; --brand-bg:#dbf1fb;
   --c-vivienda:#00C96B; --c-programas:#F2C100; --c-alimentacion:#FF3CB2; --c-conectividad:#F27C00;
   --c-discapacidad:#00C96B; --c-am:#F2C100; --c-ninez:#FF3CB2; --c-salud:#F27C00;
-  --c-mascotas:#00C96B; --c-servicios:#F2C100; --c-barrios:#FF3CB2;
-  --tint-verde:#dbf7ea; --tint-amarillo:#fdf6db; --tint-magenta:#ffe4f4; --tint-naranja:#fdeddb;
+  --c-mascotas:#00C96B; --c-servicios:#F2C100; --c-barrios:#FF3CB2; --c-alertas:#d32f2f;
+  --tint-verde:#dbf7ea; --tint-amarillo:#fdf6db; --tint-magenta:#ffe4f4; --tint-naranja:#fdeddb; --tint-rojo:#ffebee;
+  --c-urg-alta:#c62828; --tint-urg-alta:#ffebee; --c-urg-media:#e65100; --tint-urg-media:#fff3e0;
   --radius:16px; --shadow:0 1px 2px rgba(20,23,26,.06), 0 1px 12px rgba(20,23,26,.04);
   --shadow-lift:0 6px 20px rgba(20,23,26,.10), 0 2px 6px rgba(20,23,26,.06);
   --ease-standard:cubic-bezier(.4,0,.2,1); --ease-decel:cubic-bezier(0,0,.2,1); --ease-accel:cubic-bezier(.4,0,1,1);
@@ -29,6 +30,7 @@ html{scroll-behavior:smooth}
   :root{
     --bg:#0f1216; --bg-alt:#171b21; --ink:#eef1f4; --ink-soft:#a3adb8; --line:#262c34; --brand-bg:#102d39;
     --tint-verde:#103524; --tint-amarillo:#3c3310; --tint-magenta:#3e1b30; --tint-naranja:#3c2710;
+    --tint-rojo:#3e1616; --tint-urg-alta:#3e1616; --tint-urg-media:#3e2610;
   }
 }
 .material-symbols-outlined{
@@ -115,6 +117,28 @@ main{padding-top:8px}
 #ninez .chip{background:var(--tint-magenta)} #ninez .chip .material-symbols-outlined{color:var(--c-ninez)} #ninez .bar-fill{background:var(--c-ninez)} #ninez .tile-icon{background:var(--tint-magenta);color:var(--c-ninez)}
 #salud .chip{background:var(--tint-naranja)} #salud .chip .material-symbols-outlined{color:var(--c-salud)} #salud .bar-fill{background:var(--c-salud)} #salud .tile-icon{background:var(--tint-naranja);color:var(--c-salud)}
 #mascotas .chip{background:var(--tint-verde)} #mascotas .chip .material-symbols-outlined{color:var(--c-mascotas)} #mascotas .bar-fill{background:var(--c-mascotas)} #mascotas .tile-icon{background:var(--tint-verde);color:var(--c-mascotas)}
+
+#alertas .chip{background:var(--tint-rojo)} #alertas .chip .material-symbols-outlined{color:var(--c-alertas)} #alertas .bar-fill{background:var(--c-alertas)} #alertas .tile-icon{background:var(--tint-rojo);color:var(--c-alertas)}
+.badge-urg-alta{display:inline-flex;align-items:center;font-size:11px;font-weight:800;color:var(--c-urg-alta);background:var(--tint-urg-alta);padding:3px 9px;border-radius:999px;border:1px solid rgba(198,40,40,.3);letter-spacing:.02em}
+.badge-urg-media{display:inline-flex;align-items:center;font-size:11px;font-weight:800;color:var(--c-urg-media);background:var(--tint-urg-media);padding:3px 9px;border-radius:999px;border:1px solid rgba(230,81,0,.3);letter-spacing:.02em}
+.alert-live-tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:800;color:#059669;background:#d1fae5;padding:3px 9px;border-radius:999px;margin-left:8px;vertical-align:middle;letter-spacing:.02em}
+@media (prefers-color-scheme: dark){ .alert-live-tag{color:#34d399;background:#064e3b} }
+.alert-charts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:20px 0}
+.alert-chart-card{border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;background:var(--bg);box-shadow:var(--shadow)}
+.alert-chart-card h3{font-size:13.5px;font-weight:800;margin:0 0 14px;color:var(--ink);display:flex;align-items:center;gap:6px;letter-spacing:-.01em}
+.alert-chart-card h3 .material-symbols-outlined{font-size:18px}
+.alert-bar-row{margin-bottom:10px}
+.alert-bar-row:last-child{margin-bottom:0}
+.alert-bar-label{display:flex;justify-content:space-between;font-size:12px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.alert-bar-label span:last-child{color:var(--ink-soft);font-weight:700;font-variant-numeric:tabular-nums}
+.alert-bar-track{height:8px;border-radius:4px;background:var(--bg-alt);overflow:hidden}
+.alert-bar-fill{height:100%;border-radius:4px;background:var(--c-alertas);transition:width .6s var(--ease-standard)}
+.alert-search-wrap{display:flex;align-items:center;gap:10px;margin:14px 0}
+.alert-search-input{flex:1;max-width:380px;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:500;background:var(--bg);color:var(--ink);transition:border-color .2s var(--ease-standard),box-shadow .2s var(--ease-standard)}
+.alert-search-input:focus{outline:none;border-color:var(--c-alertas);box-shadow:0 0 0 3px var(--tint-rojo)}
+.alert-cell-note{max-width:340px;white-space:normal;word-break:break-word;line-height:1.45;font-size:12px;color:var(--ink)}
+.alert-cell-gps{font-family:monospace;font-size:11px;color:var(--ink-soft)}
+.alert-cell-gps a{color:var(--brand);text-decoration:underline;text-underline-offset:2px}
 
 #barrios .chip{background:var(--tint-magenta)} #barrios .chip .material-symbols-outlined{color:var(--c-barrios)} #barrios .bar-fill{background:var(--c-barrios)}
 .barrios-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:0}
@@ -242,7 +266,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;font-si
       <a href="#salud"><span class="material-symbols-outlined">cardiology</span>Salud</a>
       <a href="#mascotas"><span class="material-symbols-outlined">pets</span>Mascotas</a>
       <a href="#barrios"><span class="material-symbols-outlined">location_city</span>Barrios</a>
-      
+      <a href="#alertas"><span class="material-symbols-outlined">warning</span>Alertas</a>
     </nav>
   </div>
 </header>
@@ -362,7 +386,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;font-si
 
   
 
-  <section class="cat-section" id="barrios" style="border-bottom:none">
+  <section class="cat-section" id="barrios">
     <div class="cat-head barrios-head">
       <div class="cat-head-text"><span class="chip"><span class="material-symbols-outlined">location_city</span>Territorio</span><h2>Encuestas por relevamiento</h2></div>
       <div class="barrios-controls">
@@ -376,6 +400,85 @@ footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;font-si
       </div>
     </div>
     <div id="barrioBars"></div>
+  </section>
+
+  <section class="cat-section" id="alertas" style="border-bottom:none">
+    <div class="cat-head">
+      <span class="chip"><span class="material-symbols-outlined">warning</span>Situaciones Críticas</span>
+      <h2>Alertas comunitarias y vulnerabilidad crítica</h2>
+      <span class="alert-live-tag"><span class="material-symbols-outlined" style="font-size:13px;margin-right:2px">sensors</span>En tiempo real</span>
+    </div>
+
+    <!-- Tarjetas de KPIs -->
+    <div class="tile-grid">
+      <div class="tile">
+        <div class="tile-icon"><span class="material-symbols-outlined">crisis_alert</span></div>
+        <div class="tile-num" id="statAlertasTotal">-</div>
+        <div class="tile-label">Total de alertas críticas reportadas</div>
+      </div>
+      <div class="tile">
+        <div class="tile-icon" style="background:var(--tint-urg-alta);color:var(--c-urg-alta)"><span class="material-symbols-outlined">e911_emergency</span></div>
+        <div class="tile-num" id="statAlertasAlta" style="color:var(--c-urg-alta)">-</div>
+        <div class="tile-label">Urgencia Alta (prioridad inmediata)</div>
+      </div>
+      <div class="tile">
+        <div class="tile-icon" style="background:var(--tint-amarillo);color:var(--c-programas)"><span class="material-symbols-outlined">soup_kitchen</span></div>
+        <div class="tile-num" id="statAlertasAlim">-</div>
+        <div class="tile-label">Inseguridad alimentaria / Hambre severa</div>
+      </div>
+      <div class="tile">
+        <div class="tile-icon" style="background:var(--tint-naranja);color:var(--c-salud)"><span class="material-symbols-outlined">health_and_safety</span></div>
+        <div class="tile-num" id="statAlertasOtros">-</div>
+        <div class="tile-label">Vulnerabilidad social, salud y hábitat</div>
+      </div>
+    </div>
+
+    <!-- Graficos de barras por tipologia y urgencia -->
+    <div class="alert-charts-grid">
+      <div class="alert-chart-card">
+        <h3><span class="material-symbols-outlined" style="color:var(--c-alertas)">pie_chart</span>Distribución por tipo de situación</h3>
+        <div id="alertTiposBars"></div>
+      </div>
+      <div class="alert-chart-card">
+        <h3><span class="material-symbols-outlined" style="color:var(--c-alertas)">speed</span>Nivel de urgencia reportada</h3>
+        <div id="alertUrgenciaBars"></div>
+      </div>
+    </div>
+
+    <!-- Tabla tabulada interactiva -->
+    <div style="margin-top:28px">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px">
+        <div>
+          <h3 style="margin:0;font-size:16px;font-weight:800;letter-spacing:-.01em">Registro detallado de situaciones críticas</h3>
+          <p style="margin:4px 0 0;font-size:12.5px;color:var(--ink-soft)">Listado de alertas relevadas en territorio con observaciones cualitativas, encuestador y geolocalización.</p>
+        </div>
+        <div class="alert-search-wrap" style="margin:0">
+          <input type="text" id="alertSearchInput" class="alert-search-input" placeholder="Buscar por encuestador, tipo, texto o nota...">
+        </div>
+      </div>
+
+      <div class="table-scroll">
+        <table id="alertasTable">
+          <thead>
+            <tr>
+              <th style="width:60px"># ID</th>
+              <th style="width:130px">Fecha y hora</th>
+              <th style="width:220px">Tipo de situación</th>
+              <th style="width:100px">Urgencia</th>
+              <th style="width:160px">Encuestador</th>
+              <th style="width:150px">Ubicación GPS</th>
+              <th>Observaciones / Nota de campo</th>
+            </tr>
+          </thead>
+          <tbody id="alertasTableBody">
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:8px;font-size:11.5px;color:var(--ink-soft);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+        <span id="alertTableCount">-</span>
+        <span>Fuente: PWA Relevamiento en Campo · Base de Datos de Alertas</span>
+      </div>
+    </div>
   </section>
 
   
@@ -769,6 +872,319 @@ buildBarrioOptions();
 buildYearOptions();
 buildMonthOptions('');
 render();
+
+// ==========================================
+// SECCIÓN DE ALERTAS Y SITUACIONES CRÍTICAS
+// ==========================================
+let ALERTAS_DATA = [
+  {
+    id: 12,
+    tipo: 'Hambre / inseguridad alimentaria severa',
+    urgencia: 'Alta',
+    nota: '',
+    encuestador: 'Belén Rivarola',
+    barrio: 'Jardín Norte',
+    ubicacion: '-33.08924566991331, -64.33247297200083',
+    encuestado: {},
+    estado: 'nueva',
+    created_at: '2026-09-04T14:03:24.000Z'
+  },
+  {
+    id: 11,
+    tipo: 'Hambre / inseguridad alimentaria severa',
+    urgencia: 'Alta',
+    nota: 'La mamá aveces duerme en el refugio, ahora para en una casa por el momento , su abuela tiene cuidado de sus 3 hijos en la calle mataco 2332z no llegan con el tema del gas comida y luz . La madre tiene problema de salud mental (trastornos de tristeza severa)',
+    encuestador: 'Sin especificar',
+    barrio: 'Jardín Norte',
+    ubicacion: '-33.08924566991331, -64.33247297200083',
+    encuestado: {},
+    estado: 'nueva',
+    created_at: '2026-09-04T14:02:17.000Z'
+  },
+  {
+    id: 10,
+    tipo: 'Otro',
+    urgencia: 'Media',
+    nota: 'Hombre con discapacidad motora, lo informa su hermano quien completa la encuesta. Lo visita semanalmente para cubrir necesidades básicas. Manifiesta dificultad para ser atendido en hospital por ser pensionado. Desconoce si su hermano tiene Cud.',
+    encuestador: 'Sin especificar',
+    barrio: 'San Martín',
+    ubicacion: '-33.1464268, -64.3388297',
+    encuestado: {},
+    estado: 'nueva',
+    created_at: '2026-08-14T13:30:26.000Z'
+  },
+  {
+    id: 9,
+    tipo: 'Otro',
+    urgencia: 'Media',
+    nota: 'Alimentación son 11 personas una en situación de discapacidad 3 menores y solo pueden asegurar una comida diaria y cena en algunas oportunidades donde priorizan niños y personas con discapacidad',
+    encuestador: 'Seitz',
+    barrio: 'San Martín',
+    ubicacion: '-33.1463679, -64.3387274',
+    encuestado: {},
+    estado: 'nueva',
+    created_at: '2026-08-14T13:24:37.000Z'
+  },
+  {
+    id: 8,
+    tipo: 'Otro',
+    urgencia: 'Media',
+    nota: 'Sube consulta si van a estar.',
+    encuestador: 'Denice Minudri',
+    barrio: 'Calasanz',
+    ubicacion: '-33.1081883, -64.3842254',
+    encuestado: {},
+    estado: 'nueva',
+    created_at: '2026-07-31T13:20:34.000Z'
+  },
+  {
+    id: 7,
+    tipo: 'Otro',
+    urgencia: 'Media',
+    nota: 'Trabajan las dos personas adultas ( papá y mamá) pero necesitan ayuda para alquilar algo digno, están en una pieza prestada con mucha humedad. PIDEN AYUDA',
+    encuestador: 'Ana Carina Campodónico',
+    barrio: 'Calasanz',
+    ubicacion: '-33.108174, -64.3842279',
+    encuestado: {},
+    estado: 'nueva',
+    created_at: '2026-07-31T13:19:22.000Z'
+  },
+  {
+    id: 6,
+    tipo: 'Otro',
+    urgencia: 'Media',
+    nota: '',
+    encuestador: 'Karina Gonzalez',
+    barrio: 'Calasanz',
+    ubicacion: '-33.1090248, -64.3833626',
+    encuestado: {},
+    estado: 'nueva',
+    created_at: '2026-07-31T13:10:51.000Z'
+  },
+  {
+    id: 5,
+    tipo: 'Otro',
+    urgencia: 'Media',
+    nota: '',
+    encuestador: 'Priscila oliva',
+    barrio: '11 de Noviembre',
+    ubicacion: '',
+    encuestado: {},
+    estado: 'nueva',
+    created_at: '2026-07-22T19:36:38.000Z'
+  },
+  {
+    id: 4,
+    tipo: 'Hambre / inseguridad alimentaria severa',
+    urgencia: 'Alta',
+    nota: 'Pareja sin trabajo, ella tareas de limpieza esporádicas...niño come en la Escuela, padres toman mate. SIN LUZ, le pagan 80000 $ de luz a la vecina ... Posee AUH. Pide ALIMENTOS . SE OBSERVA LA NECESIDAD DE ASISTENCIA FAMILIAR. PASAN FRÍO. LES ROBARON, NO TIENEN PUERTA! MUCHA PRECARIEDAD',
+    encuestador: 'Ana Carina Campodónico',
+    barrio: '11 de Noviembre',
+    ubicacion: '-33.0946926, -64.3311088',
+    encuestado: {},
+    estado: 'nueva',
+    created_at: '2026-07-22T15:02:41.000Z'
+  },
+  {
+    id: 3,
+    tipo: 'Otro',
+    urgencia: 'Media',
+    nota: 'Panamá esq. Paul Harris sin iluminación y necesitan retardadadores de velocidad. Se siguen inundando, laguna. Problemas con EMOS, perdidas de agua, los vecinos sin medidores y le cobran exceso a esta familia.',
+    encuestador: 'Ana Carina Campodónico',
+    barrio: '11 de Noviembre',
+    ubicacion: '-33.0937891, -64.3325295',
+    encuestado: {},
+    estado: 'nueva',
+    created_at: '2026-07-22T13:53:56.000Z'
+  },
+  {
+    id: 2,
+    tipo: 'Hambre / inseguridad alimentaria severa',
+    urgencia: 'Media',
+    nota: 'Manifestó q esta sin gas hace 3 días y no tiene como hacer los alimentos',
+    encuestador: 'Mía villareal',
+    barrio: 'San Pablo',
+    ubicacion: '-33.1229402, -64.3472462',
+    encuestado: {},
+    estado: 'nueva',
+    created_at: '2026-06-11T13:54:05.000Z'
+  },
+  {
+    id: 1,
+    tipo: 'Otro',
+    urgencia: 'Alta',
+    nota: 'Persona con discapacidad motora y no puede ir hacer los trámites porque no tiene movilidad',
+    encuestador: 'Melina Cretton',
+    barrio: 'San Pablo',
+    ubicacion: '-33.1422912, -64.3228001',
+    encuestado: {},
+    estado: 'nueva',
+    created_at: '2026-06-10T13:29:30.000Z'
+  }
+];
+
+function formatAlertDate(dateStr) {
+  if (!dateStr) return '-';
+  try {
+    const d = new Date(dateStr);
+    if (isNaN(d.getTime())) return dateStr;
+    const dia = String(d.getDate()).padStart(2, '0');
+    const mes = String(d.getMonth() + 1).padStart(2, '0');
+    const anio = d.getFullYear();
+    const hora = String(d.getHours()).padStart(2, '0');
+    const min = String(d.getMinutes()).padStart(2, '0');
+    return `${dia}/${mes}/${anio} ${hora}:${min}`;
+  } catch (e) {
+    return dateStr;
+  }
+}
+
+function renderAlertasSection() {
+  const total = ALERTAS_DATA.length;
+  const alta = ALERTAS_DATA.filter(a => (a.urgencia || '').toLowerCase() === 'alta').length;
+  const alim = ALERTAS_DATA.filter(a => /hambre|alimen/i.test(a.tipo || '')).length;
+  const otros = total - alim;
+
+  const statTotal = document.getElementById('statAlertasTotal');
+  const statAlta = document.getElementById('statAlertasAlta');
+  const statAlim = document.getElementById('statAlertasAlim');
+  const statOtros = document.getElementById('statAlertasOtros');
+
+  if (statTotal) statTotal.textContent = total;
+  if (statAlta) statAlta.textContent = alta;
+  if (statAlim) statAlim.textContent = alim;
+  if (statOtros) statOtros.textContent = otros;
+
+  // Grafico Tipos
+  const tiposMap = {};
+  ALERTAS_DATA.forEach(a => {
+    const t = a.tipo || 'Sin tipo';
+    tiposMap[t] = (tiposMap[t] || 0) + 1;
+  });
+  const tiposList = Object.entries(tiposMap).sort((a, b) => b[1] - a[1]);
+  const tiposEl = document.getElementById('alertTiposBars');
+  if (tiposEl) {
+    tiposEl.innerHTML = tiposList.map(([t, count]) => {
+      const pct = total ? Math.round((count / total) * 100) : 0;
+      const isAlim = /hambre|alimen/i.test(t);
+      return (
+        '<div class="alert-bar-row">' +
+          '<div class="alert-bar-label">' +
+            '<span>' + t + '</span>' +
+            '<span>' + count + ' (' + pct + '%)</span>' +
+          '</div>' +
+          '<div class="alert-bar-track">' +
+            '<div class="alert-bar-fill" style="width:' + pct + '%;background:' + (isAlim ? 'var(--c-alertas)' : 'var(--c-conectividad)') + '"></div>' +
+          '</div>' +
+        '</div>'
+      );
+    }).join('');
+  }
+
+  // Grafico Urgencia
+  const urgMap = { 'Alta': alta, 'Media': total - alta };
+  const urgEl = document.getElementById('alertUrgenciaBars');
+  if (urgEl) {
+    urgEl.innerHTML = Object.entries(urgMap).map(([u, count]) => {
+      const pct = total ? Math.round((count / total) * 100) : 0;
+      const color = u === 'Alta' ? 'var(--c-urg-alta)' : 'var(--c-urg-media)';
+      return (
+        '<div class="alert-bar-row">' +
+          '<div class="alert-bar-label">' +
+            '<span>' + (u === 'Alta' ? '🔴 Urgencia Alta' : '🟠 Urgencia Media') + '</span>' +
+            '<span>' + count + ' (' + pct + '%)</span>' +
+          '</div>' +
+          '<div class="alert-bar-track">' +
+            '<div class="alert-bar-fill" style="width:' + pct + '%;background:' + color + '"></div>' +
+          '</div>' +
+        '</div>'
+      );
+    }).join('');
+  }
+
+  renderAlertasTable();
+}
+
+function renderAlertasTable() {
+  const tbody = document.getElementById('alertasTableBody');
+  const countEl = document.getElementById('alertTableCount');
+  if (!tbody) return;
+
+  const query = (document.getElementById('alertSearchInput')?.value || '').trim().toLowerCase();
+  const filtered = ALERTAS_DATA.filter(a => {
+    if (!query) return true;
+    const searchString = [
+      String(a.id),
+      a.tipo || '',
+      a.urgencia || '',
+      a.encuestador || '',
+      a.barrio || '',
+      a.nota || '',
+      a.ubicacion || ''
+    ].join(' ').toLowerCase();
+    return searchString.includes(query);
+  });
+
+  if (countEl) {
+    countEl.textContent = 'Mostrando ' + filtered.length + ' de ' + ALERTAS_DATA.length + ' alerta(s) registrada(s)';
+  }
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:24px;color:var(--ink-soft)">No se encontraron alertas que coincidan con la búsqueda.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = filtered.map(a => {
+    const isAlta = (a.urgencia || '').toLowerCase() === 'alta';
+    const badgeClass = isAlta ? 'badge-urg-alta' : 'badge-urg-media';
+    const urgText = isAlta ? '🔴 Alta' : '🟠 Media';
+    const notaHtml = a.nota ? '<div class="alert-cell-note">' + a.nota + '</div>' : '<span style="color:var(--ink-soft);font-style:italic">Sin nota adicional</span>';
+    
+    let gpsHtml = '<span style="color:var(--ink-soft)">-</span>';
+    if (a.ubicacion && a.ubicacion.includes(',')) {
+      const parts = a.ubicacion.split(',');
+      const lat = parseFloat(parts[0].trim());
+      const lng = parseFloat(parts[1].trim());
+      if (!isNaN(lat) && !isNaN(lng)) {
+        gpsHtml = '<div class="alert-cell-gps"><a href="https://maps.google.com/?q=' + lat + ',' + lng + '" target="_blank" rel="noopener" title="Ver en Google Maps">' + lat.toFixed(4) + ', ' + lng.toFixed(4) + ' ↗</a></div>';
+      }
+    }
+
+    return (
+      '<tr>' +
+        '<td><strong>#' + a.id + '</strong></td>' +
+        '<td>' + formatAlertDate(a.created_at) + '</td>' +
+        '<td><strong>' + (a.tipo || 'Sin tipo') + '</strong></td>' +
+        '<td><span class="' + badgeClass + '">' + urgText + '</span></td>' +
+        '<td>' + (a.encuestador || '<span style="color:var(--ink-soft);font-style:italic">Sin asignar</span>') + '</td>' +
+        '<td>' + gpsHtml + '</td>' +
+        '<td>' + notaHtml + '</td>' +
+      '</tr>'
+    );
+  }).join('');
+}
+
+const alertSearchEl = document.getElementById('alertSearchInput');
+if (alertSearchEl) {
+  alertSearchEl.addEventListener('input', renderAlertasTable);
+}
+
+renderAlertasSection();
+
+// Refresco en vivo asíncrono desde la API del servidor
+async function refreshLiveAlerts() {
+  try {
+    const res = await fetch('https://gs.datosriocuarto.gob.ar/api/alertas');
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data) && data.length > 0) {
+        ALERTAS_DATA = data;
+        renderAlertasSection();
+      }
+    }
+  } catch (e) {}
+}
+refreshLiveAlerts();
 
 
 if (prefersReducedMotion) {
